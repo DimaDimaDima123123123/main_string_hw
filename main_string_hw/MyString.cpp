@@ -121,3 +121,10 @@ int MyString::MyStrCmp(MyString& b)
 	}
 	return 0;
 }
+// конструктор копирование
+MyString::MyString(const MyString& other) 
+{
+	length = other.length;
+	str = new char[length + 1]; 
+	strcpy_s(str, length + 1, other.str); 
+}

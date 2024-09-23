@@ -33,4 +33,6 @@ public:
 
 	void MyDelChr(char c);
 	int MyStrCmp(MyString& b);
+
+	MyString(const MyString& other);
 };

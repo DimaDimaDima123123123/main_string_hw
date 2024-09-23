@@ -8,7 +8,13 @@ int main()
 {
     setlocale(LC_ALL, "ru");
 
-    MyString firstString;
+    MyString origstr("Строка строченька");
+    cout << "Оригинальная строка: " << origstr.getString() << endl;
+
+    MyString copystr = origstr;
+    cout << "Копия строки: " << copystr.getString() << endl;
+
+    /*MyString firstString;
     cout << "Строка длинной 80: '" << firstString.getString() << "'\n";
 
     MyString secondString(true);
@@ -67,6 +73,7 @@ int main()
     else {
         cout << "-1" << endl;
     }
+    */
 
     return 0;
 };
