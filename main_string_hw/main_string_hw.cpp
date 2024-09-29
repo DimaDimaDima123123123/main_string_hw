@@ -7,12 +7,17 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "ru");
-
     MyString origstr("Строка строченька");
     cout << "Оригинальная строка: " << origstr.getString() << endl;
 
     MyString copystr = origstr;
     cout << "Копия строки: " << copystr.getString() << endl;
+
+    // использование оператора индексирования
+    cout << "Первый символ копии: " << copystr[0] << endl;
+
+    // использование оператора вызова функции
+    copystr(); // вывод строки в консоль
 
     /*MyString firstString;
     cout << "Строка длинной 80: '" << firstString.getString() << "'\n";

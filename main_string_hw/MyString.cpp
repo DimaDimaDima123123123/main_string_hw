@@ -128,3 +128,32 @@ MyString::MyString(const MyString& other)
 	str = new char[length + 1]; 
 	strcpy_s(str, length + 1, other.str); 
 }
+
+
+MyString& MyString::operator=(const MyString& other)
+{
+	if (this != &other)
+	{ // проверка на самоприсваивание
+		delete[] str; // удаление старого массив
+		length = other.length;
+		str = new char[length + 1];
+		strcpy_s(str, length + 1, other.str);
+	}
+	return *this;
+}
+
+// реализация оператора индексирования
+char& MyString::operator[](int index)
+{
+	if (index < 0 || index >= length)
+	{
+		throw out_of_range("Индекс вне диапазона"); // исключение при неправильном индексе
+	}
+	return str[index];
+}
+
+// реализация оператора вызова функции
+void MyString::operator()() const
+{
+	cout << str << endl; // вывод строки в консоль
+}

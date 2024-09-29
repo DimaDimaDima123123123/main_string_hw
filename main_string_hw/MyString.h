@@ -4,35 +4,35 @@
 class MyString
 {
 private:
-	char* str;
-	int length;
+    char* str;
+    int length;
 
 public:
+    MyString();
+    MyString(bool askSize);
+    MyString(const char* initializedString);
+    ~MyString();
 
-	MyString();
-	MyString(bool askSize);
-	MyString(const char* initializedString);
-	~MyString();
+    int getLength() const;
+    const char* getString() const;
 
-	int getLength() const;
+    void inputString();
+    void printString() const;
 
-	const char* getString() const;
+    void MyStrcpy(MyString& obj);
+    bool MyStrStr(const char* str);
+    int MyChr(char c);
+    int MyStrLen();
+    void MyStrCat(MyString& b);
+    void MyDelChr(char c);
+    int MyStrCmp(MyString& b);
 
-	void inputString();
+    MyString(const MyString& other); 
 
-	void printString() const;
 
-	void MyStrcpy(MyString& obj);
+    MyString& operator=(const MyString& other);
 
-	bool MyStrStr(const char* str);
-
-	int MyChr(char c);
-
-	int MyStrLen();
-	void MyStrCat(MyString& b);
-
-	void MyDelChr(char c);
-	int MyStrCmp(MyString& b);
-
-	MyString(const MyString& other);
+    char& operator[](int index);
+ 
+    void operator()() const;
 };
