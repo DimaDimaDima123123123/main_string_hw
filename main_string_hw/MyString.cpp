@@ -157,3 +157,73 @@ void MyString::operator()() const
 {
 	cout << str << endl; // вывод строки в консоль
 }
+
+
+
+// (1) Move semantic
+MyString::MyString(MyString&& other) noexcept
+{
+	str = other.str;
+	length = other.length;
+	other.str = nullptr;
+	other.length = 0;
+}
+
+MyString& MyString::operator=(MyString&& other) noexcept
+{
+	if (this != &other)
+	{
+		delete[] str;
+		str = other.str;
+		length = other.length;
+		other.str = nullptr;
+		other.length = 0;
+	}
+	return *this;
+}
+
+// 2) Перегрузку ввода-вывода (friend function)
+std::ostream& operator<<(std::ostream& os, const MyString& obj)
+{
+	os << obj.getString();  // Использование метода getString() для доступа к str
+	return os;
+}
+
+std::istream& operator>>(std::istream& is, MyString& obj)
+{
+	char buffer[1000];
+	is.getline(buffer, 1000);
+	delete[] obj.str;
+	obj.length = strlen(buffer);
+	obj.str = new char[obj.length + 1];
+	strcpy_s(obj.str, obj.length + 1, buffer);
+	return is;
+}
+
+// 3) a += "Hello world";  // методом
+MyString& MyString::operator+=(const char* other)
+{
+	int otherLength = strlen(other);
+	int newLength = length + otherLength;
+	char* newStr = new char[newLength + 1];
+	strcpy_s(newStr, newLength + 1, str);
+	strcat_s(newStr, newLength + 1, other);
+	delete[] str;
+	str = newStr;
+	length = newLength;
+	return *this;
+}
+
+// 4) MyString b; b = "Hello" + a; // перегрузка через функцию
+MyString operator+(const char* lhs, const MyString& rhs)
+{
+	int lhsLength = strlen(lhs);
+	int newLength = lhsLength + rhs.getLength();
+	char* newStr = new char[newLength + 1];
+	strcpy_s(newStr, newLength + 1, lhs);
+	strcat_s(newStr, newLength + 1, rhs.getString()); 
+
+	MyString result(newStr);
+	delete[] newStr;
+	return result;
+}

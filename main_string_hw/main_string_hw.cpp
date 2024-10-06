@@ -7,6 +7,9 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "ru");
+    /*
+
+    
     MyString origstr("Строка строченька");
     cout << "Оригинальная строка: " << origstr.getString() << endl;
 
@@ -17,7 +20,9 @@ int main()
     cout << "Первый символ копии: " << copystr[0] << endl;
 
     // использование оператора вызова функции
-    copystr(); // вывод строки в консоль
+    copystr(); // вывод строки в консоль       
+    
+    */
 
     /*MyString firstString;
     cout << "Строка длинной 80: '" << firstString.getString() << "'\n";
@@ -79,6 +84,28 @@ int main()
         cout << "-1" << endl;
     }
     */
+
+
+    // (1) Move semantic
+    MyString str1("Привет");
+    MyString str2 = std::move(str1);
+    cout << "str2 после move: " << str2.getString() << endl;
+
+    // 2) Перегрузка ввода-вывода (friend function)
+    MyString inputStr;
+    cout << "Введите строку: ";
+    cin >> inputStr;
+    cout << "Вы ввели: " << inputStr << endl;
+
+    // 3) a += "Hello world";  // методом
+    str2 += ", мир!";
+    cout << "str2 после +=: " << str2 << endl;
+
+    // 4) MyString b; b = "Hello" + a; // перезгрузка через функ.
+    MyString str3 = "Здравствуй" + str2;
+    cout << "Результат сложения строк: " << str3 << endl;
+
+
 
     return 0;
 };
