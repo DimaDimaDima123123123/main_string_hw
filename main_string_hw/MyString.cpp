@@ -183,13 +183,13 @@ MyString& MyString::operator=(MyString&& other) noexcept
 }
 
 // 2) Перегрузку ввода-вывода (friend function)
-std::ostream& operator<<(std::ostream& os, const MyString& obj)
+ostream& operator<<(std::ostream& os, const MyString& obj)
 {
 	os << obj.getString();  // Использование метода getString() для доступа к str
 	return os;
 }
 
-std::istream& operator>>(std::istream& is, MyString& obj)
+istream& operator>>(std::istream& is, MyString& obj)
 {
 	char buffer[1000];
 	is.getline(buffer, 1000);
