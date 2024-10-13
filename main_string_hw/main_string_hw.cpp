@@ -85,7 +85,7 @@ int main()
     }
     */
 
-
+    /*
     // (1) Move semantic
     MyString str1("Привет");
     MyString str2 = std::move(str1);
@@ -104,8 +104,10 @@ int main()
     // 4) MyString b; b = "Hello" + a; // перезгрузка через функ.
     MyString str3 = "Здравствуй" + str2;
     cout << "Результат сложения строк: " << str3 << endl;
+    */
 
-
+    MyString s = { 'H', 'e', 'l', 'l', 'o' };
+    s.printString();  // "Hello"
 
     return 0;
 };

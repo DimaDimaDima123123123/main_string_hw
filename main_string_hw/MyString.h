@@ -54,4 +54,6 @@ public:
     friend MyString operator+(const char* lhs, const MyString& rhs);
 
 
+    MyString(initializer_list<char> charList);
+
 };

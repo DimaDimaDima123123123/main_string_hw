@@ -227,3 +227,15 @@ MyString operator+(const char* lhs, const MyString& rhs)
 	delete[] newStr;
 	return result;
 }
+
+MyString::MyString(initializer_list<char> charList)
+{
+	length = charList.size();
+	str = new char[length + 1];
+	int i = 0;
+	for (auto ch : charList)
+	{
+		str[i++] = ch;
+	}
+	str[length] = '\0';
+}
