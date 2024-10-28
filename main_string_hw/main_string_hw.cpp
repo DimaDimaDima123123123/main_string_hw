@@ -106,8 +106,12 @@ int main()
     cout << "Результат сложения строк: " << str3 << endl;
     */
 
-    MyString s = { 'H', 'e', 'l', 'l', 'o' };
-    s.printString();  // "Hello"
+    //MyString s = { 'H', 'e', 'l', 'l', 'o' };
+    //s.printString();  // "Hello"
+
+    MyString myStr("Текст.");
+
+    myStr.Save("output.txt");
 
     return 0;
 };

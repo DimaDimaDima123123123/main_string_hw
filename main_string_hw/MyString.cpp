@@ -2,6 +2,7 @@
 
 #include "MyString.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -238,4 +239,22 @@ MyString::MyString(initializer_list<char> charList)
 		str[i++] = ch;
 	}
 	str[length] = '\0';
+}
+
+void MyString::Save(const char* filename) const
+{
+	ofstream file(filename);
+
+	if (file.is_open())
+	{
+		file << str;
+		file.close();
+
+		cout << "Строка сохранена: " << filename << endl;
+	}
+
+	else
+	{
+		cout << "Ошибка: " << filename;
+	}
 }

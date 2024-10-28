@@ -56,4 +56,6 @@ public:
 
     MyString(initializer_list<char> charList);
 
+    void Save(const char* filename) const;
+
 };
